@@ -1,0 +1,47 @@
+{
+    "timeframe": "5m",
+    "scan_interval": 30,
+    "max_leverage": 10.0,
+    
+    "exchange": {
+        "name": "lighter",
+        "pair_whitelist": [
+            "ENA/USDT:USDT",
+            "LINK/USDT:USDT", 
+            "AAVE/USDT:USDT"
+        ]
+    },
+    
+    "data_sources": {
+        "primary": "lighter",
+        "lighter_api_key": "b85a0adb6e800b27d2d12be5f5551dda1da56a945c4171fa9e192840bd9b5702763d41a6e5d8839e",
+        "lighter_api_secret": "75c3195f246129f072e23e5b8c8590f1f65bd88d41f674fd122eb2454af03c0f9fc66cfdf3be5f56",
+        
+        "fallback_exchanges": {
+            "binance": {
+                "enabled": true,
+                "api_key": "YOUR_BINANCE_API_KEY_HERE",
+                "secret": "YOUR_BINANCE_SECRET_HERE",
+                "sandbox": false
+            }
+        },
+        
+        "cache_duration": 300,
+        "historical_data_path": "data/historical"
+    },
+    
+    "telegram": {
+        "enabled": false
+    },
+    
+    "backtesting": {
+        "initial_balance": 10000.0,
+        "default_timeframe": "5m",
+        "min_data_points": 1000,
+        "data_source": "fallback"
+    },
+    
+    "stoploss": -0.02,
+    "dry_run": true,
+    "dry_run_wallet": 10000
+}

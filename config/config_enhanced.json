@@ -1,0 +1,48 @@
+{
+    "max_open_trades": 8,
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.15,
+    "fiat_display_currency": "USD",
+    "dry_run": true,
+    "dry_run_wallet": 10000,
+    "timeframe": "5m",
+    "scan_interval": 30,
+    
+    "exchange": {
+        "name": "lighter",
+        "pair_whitelist": [
+            "ENA/USDT:USDT",
+            "LINK/USDT:USDT",
+            "AAVE/USDT:USDT"
+        ]
+    },
+    
+    "data_sources": {
+        "primary": "lighter",
+        "lighter_api_key": "YOUR_LIGHTER_API_KEY_HERE",
+        "lighter_api_secret": "YOUR_LIGHTER_API_SECRET_HERE",
+        
+        "fallback_exchanges": {
+            "binance": {
+                "enabled": true,
+                "api_key": "YOUR_BINANCE_API_KEY",
+                "secret": "YOUR_BINANCE_SECRET",
+                "sandbox": false
+            }
+        },
+        
+        "cache_duration": 300,
+        "historical_data_path": "data/historical"
+    },
+    
+    "telegram": {
+        "enabled": true
+    },
+    
+    "backtesting": {
+        "default_timeframe": "5m",
+        "min_data_points": 1000,
+        "data_source": "lighter"
+    }
+}
