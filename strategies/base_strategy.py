@@ -55,44 +55,45 @@ class BaseScalpStrategy(ABC):
             dataframe['rsi_7'] = ta.RSI(dataframe, timeperiod=7)
             dataframe['rsi_14'] = ta.RSI(dataframe, timeperiod=14)
             dataframe['rsi_21'] = ta.RSI(dataframe, timeperiod=21)
-
-            # Bollinger Bands
-            bollinger = ta.BBANDS(dataframe, timeperiod=20, nbdevup=2, nbdevdn=2)
+            
+            # Bollinger Bands - FIX: Convert to float parameters
+            bollinger = ta.BBANDS(dataframe, timeperiod=20, nbdevup=2.0, nbdevdn=2.0)
             dataframe['bb_upper'] = bollinger['upperband']
             dataframe['bb_middle'] = bollinger['middleband']
             dataframe['bb_lower'] = bollinger['lowerband']
             dataframe['bb_percent'] = (dataframe['close'] - dataframe['bb_lower']) / (dataframe['bb_upper'] - dataframe['bb_lower'])
             dataframe['bb_width'] = (dataframe['bb_upper'] - dataframe['bb_lower']) / dataframe['bb_middle']
-
+            
             # MACD
             macd_data = ta.MACD(dataframe)
             dataframe['macd'] = macd_data['macd']
             dataframe['macd_signal'] = macd_data['macdsignal']
             dataframe['macd_hist'] = macd_data['macdhist']
-
+            
             # EMAs
             dataframe['ema_9'] = ta.EMA(dataframe, timeperiod=9)
             dataframe['ema_21'] = ta.EMA(dataframe, timeperiod=21)
             dataframe['ema_50'] = ta.EMA(dataframe, timeperiod=50)
             dataframe['ema_200'] = ta.EMA(dataframe, timeperiod=200)
-
+            
             # Volume indicators
             dataframe['volume_sma'] = ta.SMA(dataframe['volume'], timeperiod=20)
             dataframe['volume_ratio'] = dataframe['volume'] / dataframe['volume_sma']
-
+            
             # ATR
             dataframe['atr'] = ta.ATR(dataframe, timeperiod=14)
             dataframe['atr_percent'] = dataframe['atr'] / dataframe['close']
-
+            
             # Momentum
             dataframe['momentum'] = ta.MOM(dataframe, timeperiod=5)
             dataframe['roc'] = ta.ROC(dataframe, timeperiod=5)
-
+            
             return dataframe
-
+            
         except Exception as e:
             logger.error(f"❌ Error in get_common_indicators: {e}")
             return dataframe
+
 
     # Rest of your existing methods...
 

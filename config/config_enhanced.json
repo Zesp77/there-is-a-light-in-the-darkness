@@ -1,48 +1,80 @@
 {
-    "max_open_trades": 8,
-    "stake_currency": "USDT",
-    "stake_amount": "unlimited",
-    "tradable_balance_ratio": 0.15,
+    "max_open_trades": 1,
+    "stake_currency": "USD",
+    "stake_amount": "1000",
+    "tradable_balance_ratio": 0.5,
     "fiat_display_currency": "USD",
     "dry_run": true,
     "dry_run_wallet": 10000,
     "timeframe": "5m",
     "scan_interval": 30,
-    
+    "max_leverage": 10.0,
+
     "exchange": {
         "name": "lighter",
+        "key": "",
+        "secret": "",
         "pair_whitelist": [
-            "ENA/USDT:USDT",
-            "LINK/USDT:USDT",
-            "AAVE/USDT:USDT"
-        ]
+            "ENA/USD:USD",
+            "LINK/USD:USD",
+            "AAVE/USD:USD"
+        ],
+        "pair_blacklist": []
     },
-    
+
     "data_sources": {
         "primary": "lighter",
-        "lighter_api_key": "YOUR_LIGHTER_API_KEY_HERE",
-        "lighter_api_secret": "YOUR_LIGHTER_API_SECRET_HERE",
+        "lighter_api_key": "",
+        "lighter_api_secret": "",
         
         "fallback_exchanges": {
             "binance": {
-                "enabled": true,
-                "api_key": "YOUR_BINANCE_API_KEY",
-                "secret": "YOUR_BINANCE_SECRET",
+                "enabled": false,
+                "api_key": "YOUR_BINANCE_API_KEY_HERE", 
+                "secret": "YOUR_BINANCE_SECRET_HERE",
                 "sandbox": false
             }
         },
-        
+
         "cache_duration": 300,
         "historical_data_path": "data/historical"
     },
-    
+
     "telegram": {
         "enabled": true
     },
-    
+
     "backtesting": {
+        "initial_balance": 10000.0,
         "default_timeframe": "5m",
         "min_data_points": 1000,
         "data_source": "lighter"
+    },
+
+    "single_trade_settings": {
+        "signal_cooldown_minutes": 15,
+        "quality_threshold": 50,
+        "max_trade_duration_minutes": 120,
+        "profit_target_percent": 1.5,
+        "stop_loss_percent": 0.8
+    },
+
+    "risk_management": {
+        "risk_per_trade_percent": 2.0,
+        "max_daily_trades": 3,
+        "max_consecutive_losses": 2
+    },
+
+    "stoploss": -0.008,
+    "trailing_stop": true,
+    "trailing_stop_positive": 0.004,
+    "trailing_stop_positive_offset": 0.006,
+
+    "minimal_roi": {
+        "0": 0.015,
+        "5": 0.012,
+        "10": 0.008,
+        "15": 0.005,
+        "30": 0.003
     }
 }

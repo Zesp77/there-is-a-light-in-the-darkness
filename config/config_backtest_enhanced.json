@@ -7,7 +7,7 @@
         "name": "lighter",
         "pair_whitelist": [
             "ENA/USD:USD",
-            "LINK/USD:USD",
+            "LINK/USD:USD", 
             "AAVE/USD:USD"
         ]
     },
@@ -38,7 +38,15 @@
         "initial_balance": 10000.0,
         "default_timeframe": "5m",
         "min_data_points": 1000,
-        "data_source": "fallback"
+        "data_source": "lighter"
+    },
+
+    "single_trade_settings": {
+        "signal_cooldown_minutes": 15,
+        "quality_threshold": 60,
+        "max_trade_duration_minutes": 120,
+        "profit_target_percent": 1.5,
+        "stop_loss_percent": 0.8
     },
 
     "stoploss": -0.008,

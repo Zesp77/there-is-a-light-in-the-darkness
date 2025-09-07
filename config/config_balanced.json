@@ -1,6 +1,6 @@
 {
     "max_open_trades": 8,
-    "stake_currency": "USDT",
+    "stake_currency": "USD",
     "stake_amount": "unlimited",
     "tradable_balance_ratio": 0.15,
     "fiat_display_currency": "USD",
@@ -20,15 +20,15 @@
     "trailing_stop": false,
 
     "exchange": {
-        "name": "binance",
+        "name": "lighter",
         "key": "",
         "secret": "",
         "ccxt_config": {},
         "ccxt_async_config": {},
         "pair_whitelist": [
-            "ENA/USDT:USDT",
-            "LINK/USDT:USDT",
-            "AAVE/USDT:USDT"
+            "ENA/USD:USD",
+            "LINK/USD:USD",
+            "AAVE/USD:USD"
         ],
         "pair_blacklist": []
     },
@@ -49,7 +49,7 @@
         },
         {
             "method": "MaxDrawdown",
-            "lookback_period_candles": 200,
+            "lookbook_period_candles": 200,
             "trade_limit": 20,
             "stop_duration_candles": 100,
             "max_allowed_drawdown": 0.08
